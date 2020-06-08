@@ -9,8 +9,8 @@ export default class Nav extends Component{
             ? `nav-link active`
             : 'nav-link'
             return(
-                <li className='nav-item' onClick={() => setView(item.view)}>
-                    <a className={liClass} href="#">{item.text}</a>
+                <li key={item.view} className='nav-item' onClick={() => setView(item.view)}>
+                    <a className={liClass}>{item.text}</a>
                 </li>
             )
         })

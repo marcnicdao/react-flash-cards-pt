@@ -8,9 +8,11 @@ export default class App extends Component{
     constructor(props){
         super(props)
         this.state = {
-            view: 'view-cards'
+            view: 'view-cards',
+            cards: []
         }
         this.setView = this.setView.bind(this)
+        this.addCard = this.addCard.bind(this)
     }
 
     setView(newView){
@@ -21,7 +23,7 @@ export default class App extends Component{
         const {view} = this.state
         switch(view){
             case 'create-card':
-                return <CreateCard />;
+                return <CreateCard addCard={this.addCard}/>;
             case 'review-cards':
                 return <ReviewCards />;
             case 'view-cards':
@@ -31,11 +33,27 @@ export default class App extends Component{
         }
     }
 
+    addCard(card){
+        const {cards} = this.state
+        this.setState(
+            {cards: cards.concat(card)},
+            this.saveCards()
+        )
+
+    }
+
+    saveCards(){
+        const {cards} = this.state
+        localStorage.setItem('flash-cards', JSON.stringify(cards))
+    }
+
     render(){
+        console.log('waht')
+        console.log('Cards From App:', this.state.cards)
         const {navItems} = this.props
         const {view} = this.state
         return(
-            <div>
+            <div className='col-6'>
                 <Nav setView={this.setView}
                     navItems={navItems}
                     view={view}/>

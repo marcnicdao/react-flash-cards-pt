@@ -18,6 +18,8 @@ const navItems = [
 ]
 
 ReactDOM.render(
-    <App navItems={navItems}/>,
+    <div className='d-flex justify-content-center'>
+        <App navItems={navItems}/>
+    </div>,
     document.getElementById('root')
 )

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export default class ReviewCards extends Component {
-    componentDidMount(){
-
-    }
 
     render() {
         return (
