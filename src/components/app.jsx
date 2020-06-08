@@ -37,7 +37,7 @@ export default class App extends Component{
         const {cards} = this.state
         this.setState(
             {cards: cards.concat(card)},
-            this.saveCards()
+            this.saveCards
         )
 
     }
@@ -47,7 +47,9 @@ export default class App extends Component{
         localStorage.setItem('flash-cards', JSON.stringify(cards))
     }
 
+
     render(){
+        console.log('Local Storage:',localStorage.getItem('flash-cards'))
         console.log('waht')
         console.log('Cards From App:', this.state.cards)
         const {navItems} = this.props
