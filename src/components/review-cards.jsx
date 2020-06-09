@@ -53,7 +53,7 @@ export default class ReviewCards extends Component {
                 <h1 className="text-center">Review Cards</h1>
                 <div onClick={this.flipCard} className={`px-5 d-flex justify-content-center align-items-center review-container${faceClass}`}>
                     <i className="fas fa-3x fa-chevron-left left arrow" onClick={this.nextCard}></i>
-                    <h4>{card[face]}</h4>
+                    <h4 className="text-white">{card[face]}</h4>
                     <i className="fas fa-3x fa-chevron-right right arrow" onClick={this.previousCard}></i>
                 </div>
             </div>
