@@ -5,8 +5,9 @@ export default class ViewCards extends Component {
         const { cards } = this.props
         const cardList = cards.map((card)=>{
             return(
-                <div className="rounded-lg card h-00 text-center bg-dark text-white m-2"
-                    key={card.question}>
+                <div className='col mb-4 card-group'>
+                    <div className="rounded-lg card h-100 text-center bg-dark text-white m-2"
+                        key={card.question}>
                         <h5>Question:</h5>
                         <p>{card.question}</p>
                         <div className="card-body bg-info">
@@ -14,12 +15,14 @@ export default class ViewCards extends Component {
                             <p>{card.answer}</p>
                         </div>
                     </div>
+                </div>
+
             )
         })
         return (
             <div>
                 <h1 className="text-center">My Cards</h1>
-                <div className="row row-cols-1 row-cols-md-4 card-group">
+                <div className="row row-cols-4 row-cols-md-4">
                     {cardList}
                 </div>
 
