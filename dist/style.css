@@ -14,3 +14,29 @@
     position: absolute;
     left: 10px
 }
+
+.left.arrow,
+.right.arrow,
+.card-footer{
+    cursor: pointer;
+}
+
+.delete-modal{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 23;
+    background-color: rgba(80, 59, 59, 0.411);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-modal{
+    background-color: white;
+    height: 20%;
+    width: 60%;
+    padding: 20px;
+}

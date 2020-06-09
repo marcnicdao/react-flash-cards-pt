@@ -15,6 +15,7 @@ export default class App extends Component{
         this.setView = this.setView.bind(this)
         this.addCard = this.addCard.bind(this)
         this.setActiveCard = this.setActiveCard.bind(this)
+        this.deleteCard = this.deleteCard.bind(this)
     }
 
     setView(newView){
@@ -30,10 +31,21 @@ export default class App extends Component{
                 return <ReviewCards appState={this.state}
                                     setActiveCard={this.setActiveCard}/>;
             case 'view-cards':
-                return <ViewCards cards={cards}/>;
+                return <ViewCards cards={cards}
+                                  deleteCard={this.deleteCard}
+                                  setActiveCard={this.setActiveCard}/>;
             default:
                 return null;
         }
+    }
+
+    deleteCard(){
+        const {cards, activeCard} = this.state
+        const newState = cards.filter((card, index) => index !== activeCard)
+        this.setState(
+            {cards: newState},
+            this.saveCards
+            )
     }
 
     addCard(card){
