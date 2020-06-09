@@ -1,0 +1,16 @@
+.review-container{
+    width: 60%;
+    height: 30%;
+    min-height: 300px;
+    position: relative
+}
+
+.right.arrow{
+    position: absolute;
+    right: 10px
+}
+
+.left.arrow{
+    position: absolute;
+    left: 10px
+}
