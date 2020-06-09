@@ -9,10 +9,12 @@ export default class App extends Component{
         super(props)
         this.state = {
             view: 'view-cards',
-            cards: []
+            cards: [],
+            activeCard: 0
         }
         this.setView = this.setView.bind(this)
         this.addCard = this.addCard.bind(this)
+        this.setActiveCard = this.setActiveCard.bind(this)
     }
 
     setView(newView){
@@ -20,12 +22,13 @@ export default class App extends Component{
     }
 
     getView(){
-        const { view, cards } = this.state
+        const { view, cards, activeCard} = this.state
         switch(view){
             case 'create-card':
                 return <CreateCard addCard={this.addCard}/>;
             case 'review-cards':
-                return <ReviewCards />;
+                return <ReviewCards appState={this.state}
+                                    setActiveCard={this.setActiveCard}/>;
             case 'view-cards':
                 return <ViewCards cards={cards}/>;
             default:
@@ -46,6 +49,10 @@ export default class App extends Component{
         localStorage.setItem('flash-cards', JSON.stringify(cards))
     }
 
+    setActiveCard(index){
+        this.setState({activeCard: index})
+    }
+
     componentDidMount(){
         const cards = localStorage.getItem('flash-cards')
         if (cards){
@@ -54,9 +61,7 @@ export default class App extends Component{
     }
 
     render(){
-        console.log('Local Storage:',localStorage.getItem('flash-cards'))
-        console.log('waht')
-        console.log('Cards From App:', this.state.cards)
+
         const {navItems} = this.props
         const {view} = this.state
         return(
