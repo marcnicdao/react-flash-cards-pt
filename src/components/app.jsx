@@ -20,14 +20,14 @@ export default class App extends Component{
     }
 
     getView(){
-        const {view} = this.state
+        const { view, cards } = this.state
         switch(view){
             case 'create-card':
                 return <CreateCard addCard={this.addCard}/>;
             case 'review-cards':
                 return <ReviewCards />;
             case 'view-cards':
-                return <ViewCards />;
+                return <ViewCards cards={cards}/>;
             default:
                 return null;
         }
@@ -39,7 +39,6 @@ export default class App extends Component{
             {cards: cards.concat(card)},
             this.saveCards
         )
-
     }
 
     saveCards(){
@@ -47,6 +46,12 @@ export default class App extends Component{
         localStorage.setItem('flash-cards', JSON.stringify(cards))
     }
 
+    componentDidMount(){
+        const cards = localStorage.getItem('flash-cards')
+        if (cards){
+            this.setState({cards: JSON.parse(cards) })
+        }
+    }
 
     render(){
         console.log('Local Storage:',localStorage.getItem('flash-cards'))
@@ -55,7 +60,7 @@ export default class App extends Component{
         const {navItems} = this.props
         const {view} = this.state
         return(
-            <div className='col-6'>
+            <div className='col-9'>
                 <Nav setView={this.setView}
                     navItems={navItems}
                     view={view}/>
